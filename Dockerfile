@@ -14,7 +14,6 @@ USER yeoman
 WORKDIR /home/yeoman
 
 RUN git clone https://github.com/giryan/punk.git hubot
-RUN cd hubot; npm install
-RUN cd hubot; chmod +x bin/hubot
+RUN cd hubot; git pull; npm install; chmod +x bin/hubot
 
-CMD cd hubot; bin/hubot --adapter slack
+CMD cd hubot; git pull; bin/hubot --adapter slack
