@@ -1,6 +1,6 @@
 FROM node:latest
 
-MAINTAINER Chang Shu Huai
+MAINTAINER Matt W
 
 RUN apt-get -q update
 RUN apt-get -qy install git-core redis-server
@@ -13,7 +13,7 @@ ENV HOME /home/yeoman
 USER yeoman
 WORKDIR /home/yeoman
 
-RUN git clone https://github.com/junsuwhy/slack-hubot.git hubot
+RUN git clone https://github.com/giryan/slack-hubot.git hubot
 RUN cd hubot; npm install
 
 CMD cd hubot; bin/hubot --adapter slack
