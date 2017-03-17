@@ -13,7 +13,7 @@ ENV HOME /home/yeoman
 USER yeoman
 WORKDIR /home/yeoman
 
-RUN git clone https://github.com/giryan/punk.git hubot
-RUN cd hubot; git pull; npm install; chmod +x bin/hubot
+COPY ../punk/ punk/
+RUN cd punk; npm install; chmod +x bin/hubot
 
-CMD cd hubot; git pull; bin/hubot --adapter slack
+CMD cd punk; bin/hubot --adapter slack
