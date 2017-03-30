@@ -9,10 +9,20 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
+  badgerThreshold = 10
 
   robot.hear /badger/i, (res) ->
-   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
-  #
+    badgers = robot.brain.get('Badgers')+1
+
+    if badgers > badgerThreshold
+      badgers = 0
+      res.send "mushroom Mushroom MUSHROOM!"
+    else   
+      res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+
+    robot.brain.set 'Badgers', badgers
+    
+  
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
   #   if doorType is "pod bay"
